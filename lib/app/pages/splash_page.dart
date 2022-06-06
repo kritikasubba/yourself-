@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:yourself/app/resources/size_constants.dart';
+import 'package:yourself/app/routes/router.gr.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -81,7 +83,9 @@ class _MiddleContainer extends StatelessWidget {
                 maximumSize: const Size(170, 50),
                 minimumSize: const Size(170, 50),
                 primary: const Color.fromARGB(195, 0, 169, 8)),
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(const NavbarRoute());
+            },
             child: const Text('Take Your Photo')),
       ],
     );

@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:yourself/app/resources/size_constants.dart';
+import 'package:yourself/app/routes/router.gr.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,16 +15,22 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           toolbarHeight: 80,
           elevation: 0,
-          backgroundColor: Colors.white,
+          backgroundColor: Colors.black,
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 'yourself',
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
-                    fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic,
+                    ),
               ),
-              const Icon(Icons.search_outlined, color: Colors.black)
+              const Icon(
+                Icons.search_outlined,
+                color: Colors.black,
+                size: 30,
+              )
             ],
           ),
         ),
@@ -180,7 +188,7 @@ class _TextWidget extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyText2
-                  ?.copyWith(color: Color(0xff5B8C5A))),
+                  ?.copyWith(color: const Color(0xff5B8C5A))),
         ],
       ),
     );
@@ -231,9 +239,11 @@ class StaggeredGridWidget extends StatelessWidget {
               mainAxisCellCount: 0.6,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff5B8C5A),
+                  primary: const Color(0xff5B8C5A),
                 ),
-                onPressed: (() {}),
+                onPressed: (() {
+                  context.router.push(const BookRoute());
+                }),
                 child: Text('Book Now',
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w700, color: Colors.white)),
