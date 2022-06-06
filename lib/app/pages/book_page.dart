@@ -8,6 +8,7 @@ class BookPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -28,7 +29,7 @@ class BookPage extends StatelessWidget {
                   style: Theme.of(context)
                       .textTheme
                       .headline6
-                      ?.copyWith(fontWeight: FontWeight.bold)),
+                      ?.copyWith(fontWeight: FontWeight.w400)),
               TextSpan(
                   text: 'Studio',
                   style: Theme.of(context).textTheme.headline6?.copyWith(
