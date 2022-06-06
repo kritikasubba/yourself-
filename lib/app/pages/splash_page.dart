@@ -82,7 +82,7 @@ class _MiddleContainer extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 maximumSize: const Size(170, 50),
                 minimumSize: const Size(170, 50),
-                primary: const Color.fromARGB(195, 0, 169, 8)),
+                primary: const Color(0xff5B8C5A)),
             onPressed: () {
               context.router.push(const NavbarRoute());
             },

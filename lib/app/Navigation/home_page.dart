@@ -40,7 +40,6 @@ class HomePage extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               const StaggeredGridWidget(),
-              SBC.lH,
               const _TextWidget(),
               const _LastContainer(),
               SBC.lH,
@@ -134,8 +133,8 @@ class _LastContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(15.0),
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+      margin: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 25.0),
       decoration: BoxDecoration(
           borderRadius: const BorderRadius.all(
             Radius.circular(1),
@@ -168,7 +167,7 @@ class _TextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
       child: Row(
         //mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -186,10 +185,8 @@ class _TextWidget extends StatelessWidget {
                     fontWeight: FontWeight.bold, fontStyle: FontStyle.italic)),
           ])),
           Text('See All',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText2
-                  ?.copyWith(color: const Color(0xff5B8C5A))),
+              style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                  fontWeight: FontWeight.w700, color: const Color(0xff5B8C5A))),
         ],
       ),
     );
@@ -214,14 +211,28 @@ class StaggeredGridWidget extends StatelessWidget {
               child: Container(
                   decoration: BoxDecoration(color: Colors.black),
                   child: Center(
-                    child: Text(
-                      '  Hi aesthetic People! \n  Now you can take\n  unlimited photos shots by\n  yourself!',
-                      textAlign: TextAlign.justify,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2
-                          ?.copyWith(color: Colors.white),
-                    ),
+                    child: RichText(
+                        text: TextSpan(children: [
+                      TextSpan(text: 'Hi '),
+                      TextSpan(
+                        text: 'aesthetic people!\n',
+                        style: Theme.of(context).textTheme.bodyText2?.copyWith(
+                            fontStyle: FontStyle.italic,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
+                      ),
+                      TextSpan(
+                          text:
+                              'Now you can take\nunlimited photos shots by\nyourself!'),
+                    ])),
+                    // child: Text(
+                    //   '  Hi aesthetic People! \n  Now you can take\n  unlimited photos shots by\n  yourself!',
+                    //   textAlign: TextAlign.justify,
+                    //   style: Theme.of(context)
+                    //       .textTheme
+                    //       .bodyText2
+                    //       ?.copyWith(color: Colors.white),
+                    // ),
                   ))),
           StaggeredGridTile.count(
               crossAxisCellCount: 2,
