@@ -57,10 +57,10 @@ class ScrollImageWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
-      child: Row(children: [
-        RichText(
+    return Row(children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        child: RichText(
             text: TextSpan(children: [
           TextSpan(
               text: 'Our ',
@@ -76,32 +76,32 @@ class ScrollImageWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.headline6?.copyWith(
                   fontWeight: FontWeight.bold, fontStyle: FontStyle.italic)),
         ])),
-        Expanded(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _ImageContainer(
-                  imageName: 'assets/images/vogue_image.jpg',
-                ),
-                SBC.sW,
-                _ImageContainer(
-                  imageName: 'assets/images/fashion9_image.jpg',
-                ),
-                SBC.sW,
-                _ImageContainer(
-                  imageName: 'assets/images/fashion8_image.jpg',
-                ),
-                SBC.sW,
-                _ImageContainer(
-                  imageName: 'assets/images/fashion7_image.jpg',
-                ),
-              ],
-            ),
+      ),
+      Expanded(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              _ImageContainer(
+                imageName: 'assets/images/vogue_image.jpg',
+              ),
+              SBC.sW,
+              _ImageContainer(
+                imageName: 'assets/images/fashion9_image.jpg',
+              ),
+              SBC.sW,
+              _ImageContainer(
+                imageName: 'assets/images/fashion8_image.jpg',
+              ),
+              SBC.sW,
+              _ImageContainer(
+                imageName: 'assets/images/fashion7_image.jpg',
+              ),
+            ],
           ),
-        )
-      ]),
-    );
+        ),
+      )
+    ]);
   }
 }
 
