@@ -19,6 +19,7 @@ class BookPage extends StatelessWidget {
           child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _TextWidget2(

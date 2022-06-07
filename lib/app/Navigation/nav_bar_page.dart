@@ -4,6 +4,7 @@ import 'package:yourself/app/Navigation/dashboard_page.dart';
 import 'package:yourself/app/Navigation/home_page.dart';
 import 'package:yourself/app/Navigation/notification_page.dart';
 import 'package:yourself/app/Navigation/profile_page.dart';
+import 'package:yourself/app/resources/colors.dart';
 
 class NavbarPage extends StatefulWidget {
   const NavbarPage({Key? key}) : super(key: key);
@@ -22,7 +23,7 @@ class _NavbarPageState extends State<NavbarPage> {
     ProfilePage()
   ];
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = HomePage();
+  Widget currentScreen = const HomePage();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +36,7 @@ class _NavbarPageState extends State<NavbarPage> {
           child: Icon(
             Icons.add_outlined,
           ),
-          backgroundColor: const Color(0xff5B8C5A),
+          backgroundColor: primaryColor,
           onPressed: () {},
         ),
       ),
@@ -75,7 +76,7 @@ class _NavbarPageState extends State<NavbarPage> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = DashboardPage();
+                        currentScreen = const DashboardPage();
                         currentTab = 1;
                       });
                     },
@@ -83,7 +84,7 @@ class _NavbarPageState extends State<NavbarPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          Icons.storefront,
+                          Icons.location_city_outlined,
                           size: 30,
                           color: currentTab == 1
                               ? const Color(0xff5B8C5A)
