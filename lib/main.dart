@@ -19,9 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primarySwatch: Colors.red
-      ),
+     
         debugShowCheckedModeBanner: false,
         supportedLocales: L10n.all,
         localizationsDelegates: const [

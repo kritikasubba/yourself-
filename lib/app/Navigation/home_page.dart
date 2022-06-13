@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:yourself/app/pages/book_page.dart';
 import 'package:yourself/app/resources/size_constants.dart';
@@ -21,7 +22,7 @@ class HomePage extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.white,
           title: Row(
-            mainAxisSize: MainAxisSize.min,
+            // mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
@@ -31,7 +32,7 @@ class HomePage extends StatelessWidget {
                     fontStyle: FontStyle.italic,
                     fontSize: 20),
               ),
-              Icon(Icons.search, color: Colors.black,)
+             Lottie.asset('assets/images/camera.json', height: 50),
               // const LanguagePicker(),
             ],
           ),
