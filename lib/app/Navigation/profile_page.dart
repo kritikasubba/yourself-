@@ -46,7 +46,7 @@ class ProfilePage extends StatelessWidget {
                 height: 10,
               ),
               _TextFormFieldWidget(nameController: _nameController, ageController: _ageController, townController: _townController),
-              Lottie.asset('assets/images/donut.json'),
+              Lottie.asset('assets/images/profile.json'),
             ],
           ),
         ),
