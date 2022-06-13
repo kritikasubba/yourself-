@@ -1,10 +1,13 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
+import 'package:yourself/app/pages/book_page.dart';
 import 'package:yourself/app/resources/size_constants.dart';
-import 'package:yourself/app/routes/router.gr.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:yourself/localization/l10n.dart';
+import 'package:yourself/localization/locale_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,24 +17,22 @@ class HomePage extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          toolbarHeight: 80,
+          toolbarHeight: 100,
           elevation: 0,
           backgroundColor: Colors.white,
           title: Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'yourself',
+                AppLocalizations.of(context)!.appName,
                 style: Theme.of(context).textTheme.bodyText2?.copyWith(
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     fontSize: 20),
               ),
-              const Icon(
-                Icons.search_outlined,
-                color: Colors.black,
-                size: 30,
-              )
+              Icon(Icons.search, color: Colors.black,)
+              // const LanguagePicker(),
             ],
           ),
         ),
@@ -49,6 +50,48 @@ class HomePage extends StatelessWidget {
         ));
   }
 }
+
+// class LanguagePicker extends StatelessWidget {
+//   const LanguagePicker({
+//     Key? key,
+//   }) : super(key: key);
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final provider = Provider.of<LocaleProvider>(context);
+//     final locale = provider.locale ?? Locale('en');
+//     return DropdownButtonHideUnderline(
+//       child: DropdownButton(
+//         value: locale,
+//         icon: Container(
+//           width: 0,
+//         ),
+//         items: L10n.all.map(
+//           (locale) {
+//             final flag = L10n.getFlag(locale.languageCode);
+
+//             return DropdownMenuItem(
+//               child: Center(
+//                 child: Text(
+//                   flag,
+//                   style: TextStyle(fontSize: 12),
+//                 ),
+//               ),
+//               value: locale,
+//               onTap: () {
+//                 final provider =
+//                     Provider.of<LocaleProvider>(context, listen: false);
+
+//                 provider.setLocale(locale);
+//               },
+//             );
+//           },
+//         ).toList(),
+//         onChanged: (_) {},
+//       ),
+//     );
+//   }
+// }
 
 class ScrollImageWidget extends StatelessWidget {
   const ScrollImageWidget({
@@ -254,9 +297,10 @@ class StaggeredGridWidget extends StatelessWidget {
                   primary: const Color(0xff5B8C5A),
                 ),
                 onPressed: (() {
-                  context.router.push(const BookRoute());
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => BookPage()));
                 }),
-                child: Text('Book Now',
+                child: Text(AppLocalizations.of(context)!.bookNow,
                     style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                         fontWeight: FontWeight.w700, color: Colors.white)),
               ))

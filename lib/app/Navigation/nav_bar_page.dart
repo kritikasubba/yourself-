@@ -15,11 +15,11 @@ class NavbarPage extends StatefulWidget {
 
 class _NavbarPageState extends State<NavbarPage> {
   int currentTab = 0;
-  final List<Widget> screens = const [
-    HomePage(),
-    DashboardPage(),
-    AddPage(),
-    NotificationPage(),
+  final List<Widget> screens = [
+    const HomePage(),
+    const DashboardPage(),
+   const  AddPage(),
+   const  NotificationPage(),
     ProfilePage()
   ];
   final PageStorageBucket bucket = PageStorageBucket();
@@ -123,7 +123,7 @@ class _NavbarPageState extends State<NavbarPage> {
                     minWidth: 40,
                     onPressed: () {
                       setState(() {
-                        currentScreen = const ProfilePage();
+                        currentScreen =  ProfilePage();
                         currentTab = 3;
                       });
                     },

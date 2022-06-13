@@ -1,9 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:yourself/app/Navigation/nav_bar_page.dart';
 import 'package:yourself/app/resources/colors.dart';
 import 'package:yourself/app/resources/size_constants.dart';
-import 'package:yourself/app/routes/router.gr.dart';
 
 class SplashPage extends StatelessWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -50,10 +49,11 @@ class _TextButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return ShaderMask(
       blendMode: BlendMode.srcATop,
-      shaderCallback: (bounds) => const LinearGradient(
-          begin: Alignment.topRight,
-          end: Alignment.bottomLeft,
-          colors: [primaryColor, Colors.red]).createShader(bounds),
+      shaderCallback: (bounds) => LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: [primaryColor, Colors.red.withOpacity(0.1)])
+          .createShader(bounds),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           maximumSize: const Size(170, 50),
@@ -61,13 +61,14 @@ class _TextButtonWidget extends StatelessWidget {
           //primary: const Color(0xff5B8C5A)
         ),
         onPressed: () {
-          context.router.push(const NavbarRoute());
+          Navigator.of(context).pushReplacement(
+              MaterialPageRoute(builder: (context) => NavbarPage()));
         },
         child: Text('Take Your Photo',
             style: Theme.of(context)
                 .textTheme
                 .bodyText2
-                ?.copyWith(color: Colors.black)),
+                ?.copyWith(fontWeight: FontWeight.bold, color: Colors.black)),
       ),
     );
   }

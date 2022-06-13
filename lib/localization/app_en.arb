@@ -1,0 +1,14 @@
+{
+"appName": "yourself",
+"bookNow": "Book Now",
+"booked": "booked {List}",
+"@booked": {
+    "description": "list of book",
+    "placeholders": {
+        "List": {
+            "type": "String"
+        }
+    }
+}
+
+}

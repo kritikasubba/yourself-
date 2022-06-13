@@ -1,0 +1,13 @@
+{
+    "appName": "आफै",
+    "bookNow": "बूक गर्नु",
+    "booked": "व्हरिसक्यो {List}",
+    "@booked": {
+      "description" : "list of book",
+      "placeholders" : {
+       "List": {
+         "type": "String"
+    }
+}
+    }
+}

@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:yourself/app/resources/colors.dart';
@@ -214,7 +213,7 @@ class _AppbarWidget extends StatelessWidget {
       children: [
         InkWell(
           onTap: (() {
-            context.router.pop();
+            Navigator.of(context).pop();
           }),
           child: const Icon(
             Icons.arrow_back_ios_outlined,
