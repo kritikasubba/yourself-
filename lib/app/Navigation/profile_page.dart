@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'package:lottie/lottie.dart';
-
+import 'package:yourself/app/resources/size_constants.dart';
 
 class ProfilePage extends StatelessWidget {
   final _nameController = TextEditingController();
@@ -19,12 +19,18 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title:  Text('Profile', style: Theme.of(context).textTheme.headline5,),
+        title: Text(
+          'Profile',
+          style: Theme.of(context).textTheme.headline5,
+        ),
         leading: InkWell(
             onTap: () {
               Navigator.of(context).pop();
             },
-            child: const Icon(Icons.arrow_back_ios, color: Colors.black ,)),
+            child: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            )),
       ),
       body: SingleChildScrollView(
           child: SafeArea(
@@ -41,11 +47,17 @@ class ProfilePage extends StatelessWidget {
               const SizedBox(
                 height: 5,
               ),
-               Text('Change Profile Picture', style: Theme.of(context).textTheme.headline6,),
+              Text(
+                'Change Profile Picture',
+                style: Theme.of(context).textTheme.headline6,
+              ),
               const SizedBox(
                 height: 10,
               ),
-              _TextFormFieldWidget(nameController: _nameController, ageController: _ageController, townController: _townController),
+              _TextFormFieldWidget(
+                  nameController: _nameController,
+                  ageController: _ageController,
+                  townController: _townController),
               Lottie.asset('assets/images/profile.json'),
             ],
           ),
@@ -61,7 +73,10 @@ class _TextFormFieldWidget extends StatelessWidget {
     required TextEditingController nameController,
     required TextEditingController ageController,
     required TextEditingController townController,
-  }) : _nameController = nameController, _ageController = ageController, _townController = townController, super(key: key);
+  })  : _nameController = nameController,
+        _ageController = ageController,
+        _townController = townController,
+        super(key: key);
 
   final TextEditingController _nameController;
   final TextEditingController _ageController;
@@ -99,10 +114,9 @@ class _TextFormFieldWidget extends StatelessWidget {
         ),
         ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: const Color(0xff5B8C5A),
+                primary: const Color(0xff5B8C5A),
                 maximumSize: const Size(350, 50),
                 minimumSize: const Size(350, 50)),
-                
             onPressed: () {
               final name = _nameController.text;
               final age = int.parse(_ageController.text);
@@ -110,10 +124,25 @@ class _TextFormFieldWidget extends StatelessWidget {
               createUser(name: name, age: age, homeTown: homeTown);
             },
             child: const Text('Create')),
+            SBC.lH,
+        ElevatedButton(
+            style: ElevatedButton.styleFrom(
+                primary: const Color(0xff5B8C5A),
+                maximumSize: const Size(350, 50),
+                minimumSize: const Size(350, 50)),
+            onPressed: showToast,
+            child: const Text('Update Profile'))
       ],
     );
   }
 }
+
+void showToast() => Fluttertoast.showToast(
+    msg: "profile is updated successfully",
+    fontSize: 18,
+    // backgroundColor: Colors.red,
+    gravity: ToastGravity.CENTER);
+
 
 Future createUser(
     {required String name, required int age, required String homeTown}) async {
