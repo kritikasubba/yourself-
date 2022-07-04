@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:overlay_support/overlay_support.dart';
 import 'package:yourself/app/pages/splash_page.dart';
 import 'package:yourself/localization/l10n.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -18,18 +19,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-     
-        debugShowCheckedModeBanner: false,
-        supportedLocales: L10n.all,
-        localizationsDelegates: const [
-          AppLocalizations.delegate, // access all diff translation by gen file
-          GlobalMaterialLocalizations
-              .delegate, //translation of material widget inside
-          GlobalCupertinoLocalizations
-              .delegate, //to listen local localization delegation
-          GlobalWidgetsLocalizations.delegate
-        ],
-        home: const SplashPage());
+    return OverlaySupport(
+      child: MaterialApp(
+       
+          debugShowCheckedModeBanner: false,
+          supportedLocales: L10n.all,
+          localizationsDelegates: const [
+            AppLocalizations.delegate, // access all diff translation by gen file
+            GlobalMaterialLocalizations
+                .delegate, //translation of material widget inside
+            GlobalCupertinoLocalizations
+                .delegate, //to listen local localization delegation
+            GlobalWidgetsLocalizations.delegate
+          ],
+          home: const SplashPage()),
+    );
   }
 }

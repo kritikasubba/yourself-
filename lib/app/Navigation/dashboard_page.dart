@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
+import 'package:yourself/app/resources/size_constants.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class DashboardPage extends StatelessWidget {
         body: Column(
       children: [
         Container(
-          height: 250,
+          height: 200,
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.only(
               bottomRight: Radius.circular(50),
@@ -33,12 +33,42 @@ class DashboardPage extends StatelessWidget {
                       ),
                       color: Colors.white,
                     ),
-                    child: Center(child: Text('Hello', style: Theme.of(context).textTheme.headline5,)),
-                  ))
+                    child: Center(child: Text('Bank Details', style: Theme.of(context).textTheme.headline5?.copyWith(
+                      fontWeight: FontWeight.bold
+                    ))),
+                  )),
             ],
           ),
-        )
+        ),
+
+      
+     
+               
+               
+             
+             
+        
       ],
     ));
+  }
+}
+
+class FeildWidget extends StatelessWidget {
+  String? title;
+  FeildWidget({
+    required this.title,
+
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      decoration: InputDecoration(
+        prefixText: title,
+        prefixStyle: TextStyle(color:  Colors.red)
+        
+      ),
+    );
   }
 }
