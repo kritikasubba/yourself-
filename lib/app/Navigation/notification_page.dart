@@ -64,9 +64,29 @@ class _NotificationPageState extends State<NotificationPage> {
       print('Permission declined by user');
     }
   }
+  checkForInitialMessage() async {
+    await Firebase.initializeApp();
+  RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage(); //initial message jun chai remote server bata recieve huncha
+if(initialMessage != null) {
+
+   PushNotification notification = PushNotification(
+            //firebase bata aako message model mah save gareko
+            body: initialMessage.notification!.body ?? "",
+            dataBody: initialMessage.data['body'],
+            dataTitle: initialMessage.data['title'],
+            title: initialMessage.notification!.title ?? "");
+        setState(() {
+          _totalNotificationCounter++; //notification receive vayec notification counter increase
+          _notificationInfo =
+              notification; //remote server bata aako message(value) haru notificationinfo mah save gareko
+        });
+}
+}
 
   @override
   void initState() {
+
+
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {  //app ko baira notification show
        PushNotification notification = PushNotification(
             //firebase bata aako message model mah save gareko
@@ -82,10 +102,12 @@ class _NotificationPageState extends State<NotificationPage> {
 
     });
     registerNotification();
+    checkForInitialMessage();
     _totalNotificationCounter = 0;
     // TODO: implement initState
     super.initState();
   }
+
 
   @override
   Widget build(BuildContext context) {
